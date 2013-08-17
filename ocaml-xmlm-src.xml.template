@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface
+	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
+	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
+	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
+
+	<name>ocaml-xmlm-src</name>
+	<summary>ocaml-xmlm-src</summary>
+	<description>
+	</description>
+	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-xmlm-src.xml"/>
+
+	<group arch="*-src" compile:dup-src="true">
+		<command name="compile">
+			<runner interface="http://repo.roscidus.com/utils/bash">
+				<arg>-euxc</arg>
+				<arg>
+					cd "$SRCDIR"
+					ocaml setup.ml -configure --disable-docs --destdir "$DISTDIR"
+					ocaml setup.ml -build
+					OCAMLFIND_DESTDIR="$DISTDIR" ocaml setup.ml -install
+					tree "$BUILDDIR"
+					tree "$DISTDIR"
+				</arg>
+			</runner>
+			<compile:implementation>
+				<environment insert="" mode="prepend" name="OCAMLPATH"/>
+			</compile:implementation>
+		</command>
+		<implementation version="{version}">
+			<manifest-digest/>
+			<recipe>
+				<archive href="{archive}"/>
+			</recipe>
+		</implementation>
+	</group>
+
+</interface>
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface
+	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
+	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
+	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
+
+	<name>ocaml-yojson-src</name>
+	<summary>ocaml-yojson-src</summary>
+	<description>
+	</description>
+	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-yojson-src.xml"/>
+
+	<group compile:dup-src="true" arch="*-src">
+		<command name="compile">
+			<runner interface="http://repo.roscidus.com/utils/bash">
+				<arg>-euxc</arg>
+				<arg>
+					make -C "$BUILDDIR" META
+					cp -a "$BUILDDIR" "$DISTDIR/yojson"
+				</arg>
+			</runner>
+			<compile:implementation arch="*-*">
+				<environment insert="" mode="prepend" name="OCAMLPATH"/>
+			</compile:implementation>
+		</command>
+		<implementation version="{version}">
+			<manifest-digest/>
+			<recipe>
+				<archive href="{archive}"/>
+			</recipe>
+		</implementation>
+	</group>
+
+</interface>
+

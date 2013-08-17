@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface
+	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
+	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
+	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
+
+	<name>zeroinstall-ocaml</name>
+	<summary>zeroinstall-ocaml</summary>
+	<publish mode="featured|third-party|package|0tools|ignore" xmlns="http://gfxmonk.net/dist/0install"/>
+	<description>
+	</description>
+	<feed-for interface="http://gfxmonk.net/dist/0install/zeroinstall-ocaml.xml"/>
+
+	<group arch="*-src" compile:dup-src="true">
+		<command name="compile">
+			<runner interface="http://repo.roscidus.com/utils/bash">
+				<arg>-euxc</arg>
+				<arg>
+					cd "$BUILDDIR/ocaml"
+					make ocaml
+				</arg>
+			</runner>
+			<requires interface="./ocaml-ounit-src.0compile/ocaml-ounit-linux-x86_64/0install/feed.xml"/>
+			<requires interface="./ocaml-yojson-src.0compile/ocaml-yojson-any-any/0install/feed.xml"/>
+			<requires interface="./ocaml-xmlm-src.0compile/ocaml-xmlm-linux-x86_64/0install/feed.xml"/>
+			<command name="run" path="zeroinstall-ocaml">
+			</command>
+			<compile:implementation>
+				<command name="run" path="0install"/>
+			</compile:implementation>
+		</command>
+		<implementation id="HEAD" version="0.1">
+			<manifest-digest/>
+			<archive href="HEAD.tar"/>
+		</implementation>
+	</group>
+</interface>
+
