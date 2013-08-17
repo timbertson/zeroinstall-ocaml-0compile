@@ -2,3 +2,5 @@
 *.tar.gz
 *.tbz
 *.0compile/
+*.tar
+HEAD

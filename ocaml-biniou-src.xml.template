@@ -5,38 +5,31 @@
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
 	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
 
-	<name>ocaml-yojson-src</name>
-	<summary>ocaml-yojson-src</summary>
+	<name>ocaml-biniou-src</name>
+	<summary>ocaml-biniou-src</summary>
 	<description>
 	</description>
-	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-yojson-src.xml"/>
+	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-biniou-src.xml"/>
 	<!--
-version=1.1.6 archive=http://mjambon.com/releases/yojson/yojson-1.1.6.tar.gz
+version=1.0.6 archive=http://mjambon.com/releases/biniou/biniou-1.0.6.tar.gz
 	-->
 
-	<group compile:dup-src="true" arch="*-src">
+	<group arch="*-src" compile:dup-src="true">
 		<command name="compile">
 			<requires interface="./ocaml-easy-format-src.0compile/ocaml-easy-format-linux-x86_64/0install/feed.xml"/>
-			<requires interface="./ocaml-cppo-src.0compile/ocaml-cppo-linux-x86_64/0install/feed.xml"/>
-			<requires interface="./ocaml-biniou-src.0compile/ocaml-biniou-linux-x86_64/0install/feed.xml">
-				<version not-before="1.0.6"/>
-			</requires>
 			<runner interface="http://repo.roscidus.com/utils/bash">
 				<arg>-euxc</arg>
 				<arg>
 					cd "$SRCDIR"
-					export OCAMLFIND_DESTDIR="$DISTDIR"
 					export PREFIX="$DISTDIR"
+					export OCAMLFIND_DESTDIR="$DISTDIR"
 					mkdir -p "$DISTDIR/bin"
-					make default || make default  #XXX: first `make` fails but the second succeeds!
-					make install
+					make default install
+					tree "$BUILDDIR"
+					tree "$DISTDIR"
 				</arg>
 			</runner>
 			<compile:implementation>
-				<requires interface="../../../ocaml-easy-format-src.0compile/ocaml-easy-format-linux-x86_64/0install/feed.xml"/>
-				<requires interface="../../../ocaml-biniou-src.0compile/ocaml-biniou-linux-x86_64/0install/feed.xml">
-					<version not-before="1.0.6"/>
-				</requires>
 				<environment insert="" mode="prepend" name="OCAMLPATH"/>
 			</compile:implementation>
 		</command>

@@ -5,35 +5,36 @@
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
 	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
 
-	<name>ocaml-ounit-src</name>
-	<summary>ocaml-ounit-src</summary>
+	<name>ocaml-cppo-src</name>
+	<summary>ocaml-cppo-src</summary>
 	<description>
 	</description>
-	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-ounit-src.xml"/>
+	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-cppo-src.xml"/>
 	<!--
-version=1.1.2 archive=http://forge.ocamlcore.org/frs/download.php/886/ounit-1.1.2.tar.gz
+version=0.9.3 archive=http://mjambon.com/releases/cppo/cppo-0.9.3.tar.gz
 	-->
 
-	<group arch="*-src" compile:dup-src="true">
+	<group compile:dup-src="true" arch="*-src">
 		<command name="compile">
 			<runner interface="http://repo.roscidus.com/utils/bash">
 				<arg>-euxc</arg>
 				<arg>
 					cd "$SRCDIR"
-					ocaml setup.ml -configure --destdir "$DISTDIR"
-					ocaml setup.ml -build
-					OCAMLFIND_DESTDIR="$DISTDIR" ocaml setup.ml -install
-					tree "$BUILDDIR"
-					tree "$DISTDIR"
+					export PREFIX="$DISTDIR"
+					mkdir "$DISTDIR/bin"
+					make all
+					make install
 				</arg>
 			</runner>
 			<compile:implementation>
-				<environment insert="" mode="prepend" name="OCAMLPATH"/>
+				<environment insert="bin" mode="prepend" name="PATH"/>
 			</compile:implementation>
 		</command>
 		<implementation version="{version}">
 			<manifest-digest/>
-			<archive href="{archive}"/>
+			<recipe>
+				<archive href="{archive}"/>
+			</recipe>
 		</implementation>
 	</group>
 
