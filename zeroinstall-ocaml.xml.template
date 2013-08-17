@@ -21,9 +21,9 @@
 					cp --dereference 0install "$DISTDIR/bin/"
 				</arg>
 			</runner>
-			<requires interface="./ocaml-ounit-src.0compile/ocaml-ounit-linux-x86_64/0install/feed.xml"/>
-			<requires interface="./ocaml-yojson-src.0compile/ocaml-yojson-linux-x86_64/0install/feed.xml"/>
-			<requires interface="./ocaml-xmlm-src.0compile/ocaml-xmlm-linux-x86_64/0install/feed.xml"/>
+			<requires interface="./ocaml-ounit.0compile/ocaml-ounit-linux-x86_64/0install/feed.xml"/>
+			<requires interface="./ocaml-yojson.0compile/ocaml-yojson-linux-x86_64/0install/feed.xml"/>
+			<requires interface="./ocaml-xmlm.0compile/ocaml-xmlm-linux-x86_64/0install/feed.xml"/>
 			<command name="run" path="zeroinstall-ocaml">
 			</command>
 			<compile:implementation>

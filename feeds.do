@@ -1,7 +1,7 @@
 exec >&2
 redo-ifchange \
-	ocaml-ounit-src.xml \
-	ocaml-yojson-src.xml \
-	ocaml-xmlm-src.xml \
-	ocaml-easy-format-src.xml \
+	ocaml-ounit.xml \
+	ocaml-yojson.xml \
+	ocaml-xmlm.xml \
+	ocaml-easy-format.xml \
 	zeroinstall-ocaml.xml

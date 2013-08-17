@@ -5,12 +5,12 @@
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
 	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
 
-	<name>ocaml-ounit-src</name>
-	<summary>ocaml-ounit-src</summary>
+	<name>ocaml-easy-format</name>
+	<summary>ocaml-easy-format</summary>
 	<description>
 	</description>
 	<!--
-version=1.1.2 archive=http://forge.ocamlcore.org/frs/download.php/886/ounit-1.1.2.tar.gz
+			version=1.0.1 archive=http://mjambon.com/releases/easy-format/easy-format-1.0.1.tar.gz
 	-->
 
 	<group arch="*-src" compile:dup-src="true">
@@ -19,9 +19,7 @@ version=1.1.2 archive=http://forge.ocamlcore.org/frs/download.php/886/ounit-1.1.
 				<arg>-euxc</arg>
 				<arg>
 					cd "$SRCDIR"
-					ocaml setup.ml -configure --destdir "$DISTDIR"
-					ocaml setup.ml -build
-					OCAMLFIND_DESTDIR="$DISTDIR" ocaml setup.ml -install
+					OCAMLFIND_DESTDIR="$DISTDIR" make default install
 					tree "$BUILDDIR"
 					tree "$DISTDIR"
 				</arg>
@@ -32,7 +30,9 @@ version=1.1.2 archive=http://forge.ocamlcore.org/frs/download.php/886/ounit-1.1.
 		</command>
 		<implementation version="{version}">
 			<manifest-digest/>
-			<archive href="{archive}"/>
+			<recipe>
+				<archive href="{archive}"/>
+			</recipe>
 		</implementation>
 	</group>
 

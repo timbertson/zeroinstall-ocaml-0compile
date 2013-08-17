@@ -5,23 +5,25 @@
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
 	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
 
-	<name>ocaml-xmlm-src</name>
-	<summary>ocaml-xmlm-src</summary>
+	<name>ocaml-biniou</name>
+	<summary>ocaml-biniou</summary>
 	<description>
 	</description>
 	<!--
-version=1.1.1 archive=http://erratique.ch/software/xmlm/releases/xmlm-1.1.1.tbz
+version=1.0.6 archive=http://mjambon.com/releases/biniou/biniou-1.0.6.tar.gz
 	-->
 
 	<group arch="*-src" compile:dup-src="true">
 		<command name="compile">
+			<requires interface="./ocaml-easy-format.0compile/ocaml-easy-format-linux-x86_64/0install/feed.xml"/>
 			<runner interface="http://repo.roscidus.com/utils/bash">
 				<arg>-euxc</arg>
 				<arg>
 					cd "$SRCDIR"
-					ocaml setup.ml -configure --disable-docs --destdir "$DISTDIR"
-					ocaml setup.ml -build
-					OCAMLFIND_DESTDIR="$DISTDIR" ocaml setup.ml -install
+					export PREFIX="$DISTDIR"
+					export OCAMLFIND_DESTDIR="$DISTDIR"
+					mkdir -p "$DISTDIR/bin"
+					make default install
 					tree "$BUILDDIR"
 					tree "$DISTDIR"
 				</arg>

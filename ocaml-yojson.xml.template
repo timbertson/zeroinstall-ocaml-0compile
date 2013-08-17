@@ -5,8 +5,8 @@
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
 	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
 
-	<name>ocaml-yojson-src</name>
-	<summary>ocaml-yojson-src</summary>
+	<name>ocaml-yojson</name>
+	<summary>ocaml-yojson</summary>
 	<description>
 	</description>
 	<!--
@@ -15,9 +15,9 @@ version=1.1.6 archive=http://mjambon.com/releases/yojson/yojson-1.1.6.tar.gz
 
 	<group compile:dup-src="true" arch="*-src">
 		<command name="compile">
-			<requires interface="./ocaml-easy-format-src.0compile/ocaml-easy-format-linux-x86_64/0install/feed.xml"/>
-			<requires interface="./ocaml-cppo-src.0compile/ocaml-cppo-linux-x86_64/0install/feed.xml"/>
-			<requires interface="./ocaml-biniou-src.0compile/ocaml-biniou-linux-x86_64/0install/feed.xml">
+			<requires interface="./ocaml-easy-format.0compile/ocaml-easy-format-linux-x86_64/0install/feed.xml"/>
+			<requires interface="./ocaml-cppo.0compile/ocaml-cppo-linux-x86_64/0install/feed.xml"/>
+			<requires interface="./ocaml-biniou.0compile/ocaml-biniou-linux-x86_64/0install/feed.xml">
 				<version not-before="1.0.6"/>
 			</requires>
 			<runner interface="http://repo.roscidus.com/utils/bash">
@@ -32,8 +32,8 @@ version=1.1.6 archive=http://mjambon.com/releases/yojson/yojson-1.1.6.tar.gz
 				</arg>
 			</runner>
 			<compile:implementation>
-				<requires interface="../../../ocaml-easy-format-src.0compile/ocaml-easy-format-linux-x86_64/0install/feed.xml"/>
-				<requires interface="../../../ocaml-biniou-src.0compile/ocaml-biniou-linux-x86_64/0install/feed.xml">
+				<requires interface="../../../ocaml-easy-format.0compile/ocaml-easy-format-linux-x86_64/0install/feed.xml"/>
+				<requires interface="../../../ocaml-biniou.0compile/ocaml-biniou-linux-x86_64/0install/feed.xml">
 					<version not-before="1.0.6"/>
 				</requires>
 				<environment insert="" mode="prepend" name="OCAMLPATH"/>

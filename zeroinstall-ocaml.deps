@@ -1,3 +1,3 @@
-ocaml-ounit-src.0compile
-ocaml-xmlm-src.0compile
-ocaml-yojson-src.0compile
+ocaml-ounit.0compile
+ocaml-xmlm.0compile
+ocaml-yojson.0compile

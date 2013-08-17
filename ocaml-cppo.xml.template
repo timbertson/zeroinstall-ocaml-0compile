@@ -5,8 +5,8 @@
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
 	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
 
-	<name>ocaml-cppo-src</name>
-	<summary>ocaml-cppo-src</summary>
+	<name>ocaml-cppo</name>
+	<summary>ocaml-cppo</summary>
 	<description>
 	</description>
 	<!--
