@@ -9,7 +9,6 @@
 	<summary>ocaml-biniou-src</summary>
 	<description>
 	</description>
-	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-biniou-src.xml"/>
 	<!--
 version=1.0.6 archive=http://mjambon.com/releases/biniou/biniou-1.0.6.tar.gz
 	-->

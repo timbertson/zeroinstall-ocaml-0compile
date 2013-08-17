@@ -9,7 +9,6 @@
 	<summary>ocaml-yojson-src</summary>
 	<description>
 	</description>
-	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-yojson-src.xml"/>
 	<!--
 version=1.1.6 archive=http://mjambon.com/releases/yojson/yojson-1.1.6.tar.gz
 	-->

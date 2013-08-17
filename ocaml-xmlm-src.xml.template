@@ -9,7 +9,6 @@
 	<summary>ocaml-xmlm-src</summary>
 	<description>
 	</description>
-	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-xmlm-src.xml"/>
 	<!--
 version=1.1.1 archive=http://erratique.ch/software/xmlm/releases/xmlm-1.1.1.tbz
 	-->

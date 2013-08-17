@@ -7,10 +7,8 @@
 
 	<name>zeroinstall-ocaml</name>
 	<summary>zeroinstall-ocaml</summary>
-	<publish mode="featured|third-party|package|0tools|ignore" xmlns="http://gfxmonk.net/dist/0install"/>
 	<description>
 	</description>
-	<feed-for interface="http://gfxmonk.net/dist/0install/zeroinstall-ocaml.xml"/>
 
 	<group arch="*-src" compile:dup-src="true">
 		<command name="compile">

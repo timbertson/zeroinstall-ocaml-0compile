@@ -9,7 +9,6 @@
 	<summary>ocaml-easy-format-src</summary>
 	<description>
 	</description>
-	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-easy-format-src.xml"/>
 	<!--
 			version=1.0.1 archive=http://mjambon.com/releases/easy-format/easy-format-1.0.1.tar.gz
 	-->

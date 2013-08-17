@@ -9,7 +9,6 @@
 	<summary>ocaml-cppo-src</summary>
 	<description>
 	</description>
-	<feed-for interface="http://gfxmonk.net/dist/0install/ocaml-cppo-src.xml"/>
 	<!--
 version=0.9.3 archive=http://mjambon.com/releases/cppo/cppo-0.9.3.tar.gz
 	-->
