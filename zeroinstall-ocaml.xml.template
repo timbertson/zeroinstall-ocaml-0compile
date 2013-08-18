@@ -32,7 +32,7 @@
 		<implementation id="HEAD" version="0.1">
 			<manifest-digest/>
 			<recipe>
-				<archive href="HEAD.tar"/>
+				<archive href="HEAD.tar.gz"/>
 				<remove path="0compile.properties"/>
 			</recipe>
 		</implementation>
