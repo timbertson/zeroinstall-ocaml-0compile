@@ -25,6 +25,9 @@ version=0.9.3 archive=http://mjambon.com/releases/cppo/cppo-0.9.3.tar.gz
 				</arg>
 			</runner>
 			<compile:implementation>
+				<command name="run" path="bin/cppo">
+					<runner interface="http://repo.roscidus.com/ocaml/ocaml-runtime"/>
+				</command>
 				<environment insert="bin" mode="prepend" name="PATH"/>
 			</compile:implementation>
 		</command>
