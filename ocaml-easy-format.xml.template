@@ -2,8 +2,7 @@
 <?xml-stylesheet type='text/xsl' href='interface.xsl'?>
 <interface
 	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
-	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
-	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
+	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
 
 	<name>ocaml-easy-format</name>
 	<summary>ocaml-easy-format</summary>

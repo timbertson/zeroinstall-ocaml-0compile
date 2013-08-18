@@ -2,8 +2,7 @@
 <?xml-stylesheet type='text/xsl' href='interface.xsl'?>
 <interface
 	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
-	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile"
-	xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release">
+	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
 
 	<name>zeroinstall-ocaml</name>
 	<summary>zeroinstall-ocaml</summary>
@@ -21,9 +20,9 @@
 					cp --dereference 0install "$DISTDIR/bin/"
 				</arg>
 			</runner>
-			<requires interface="./ocaml-ounit.0compile/ocaml-ounit-linux-x86_64/0install/feed.xml"/>
-			<requires interface="./ocaml-yojson.0compile/ocaml-yojson-linux-x86_64/0install/feed.xml"/>
-			<requires interface="./ocaml-xmlm.0compile/ocaml-xmlm-linux-x86_64/0install/feed.xml"/>
+			<requires interface="./ocaml-ounit.0compile/ocaml-ounit-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-yojson.0compile/ocaml-yojson-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-xmlm.0compile/ocaml-xmlm-{arch}/0install/feed.xml"/>
 			<command name="run" path="zeroinstall-ocaml">
 			</command>
 			<compile:implementation>
@@ -32,7 +31,10 @@
 		</command>
 		<implementation id="HEAD" version="0.1">
 			<manifest-digest/>
-			<archive href="HEAD.tar"/>
+			<recipe>
+				<archive href="HEAD.tar"/>
+				<remove path="0compile.properties"/>
+			</recipe>
 		</implementation>
 	</group>
 </interface>
