@@ -1,3 +1,3 @@
 set -eux
 exec >&2
-wget -O "$3" "https://github.com/0install/0install/archive/c52030fdea3df85aa434ccc0383b4c680b3e1c09.tar.gz"
+wget -O "$3" "https://github.com/0install/0install/archive/43af7858a3a759d58f9cc55bc191985786fcffe9.tar.gz"

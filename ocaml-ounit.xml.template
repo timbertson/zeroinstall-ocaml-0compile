@@ -21,8 +21,6 @@ version=1.1.2 archive=http://forge.ocamlcore.org/frs/download.php/886/ounit-1.1.
 					ocaml setup.ml -configure --destdir "$DISTDIR"
 					ocaml setup.ml -build
 					OCAMLFIND_DESTDIR="$DISTDIR" ocaml setup.ml -install
-					tree "$BUILDDIR"
-					tree "$DISTDIR"
 				</arg>
 			</runner>
 			<compile:implementation>

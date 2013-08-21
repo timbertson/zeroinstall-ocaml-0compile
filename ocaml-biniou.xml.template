@@ -23,8 +23,6 @@ version=1.0.6 archive=http://mjambon.com/releases/biniou/biniou-1.0.6.tar.gz
 					export OCAMLFIND_DESTDIR="$DISTDIR"
 					mkdir -p "$DISTDIR/bin"
 					make default install
-					tree "$BUILDDIR"
-					tree "$DISTDIR"
 				</arg>
 			</runner>
 			<compile:implementation>

@@ -19,8 +19,6 @@
 				<arg>
 					cd "$SRCDIR"
 					OCAMLFIND_DESTDIR="$DISTDIR" make default install
-					tree "$BUILDDIR"
-					tree "$DISTDIR"
 				</arg>
 			</runner>
 			<compile:implementation>
