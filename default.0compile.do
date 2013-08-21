@@ -1,5 +1,6 @@
 exec >&2
 set -eux
+. ./do-env
 redo-ifchange "$2.xml"
 if [ -f "$2.deps" ]; then
 	redo-ifchange $(cat "$2.deps")

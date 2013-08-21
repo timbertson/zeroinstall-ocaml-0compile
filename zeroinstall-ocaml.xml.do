@@ -1,5 +1,6 @@
 exec >&2
 set -eux
+. ./do-env
 redo-ifchange HEAD.tar.gz
 redo-ifchange ARCH
 redo-ifchange "$1.template"

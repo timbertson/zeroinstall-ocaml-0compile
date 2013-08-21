@@ -1,5 +1,6 @@
 exec >&2
 set -eux
+. ./do-env
 redo-ifchange "$1.template"
 vars="$(grep -E -o '^\s*version=.*' "$1.template")"
 if fgrep -q '{arch}' "$1.template"; then

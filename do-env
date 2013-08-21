@@ -1,0 +1,3 @@
+redo-ifchange do-env
+alias 0template="0install run http://0install.net/tools/0template.xml"
+alias 0compile="0install run http://0install.net/2006/interfaces/0compile.xml"
