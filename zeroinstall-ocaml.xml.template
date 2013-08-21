@@ -1,25 +1,22 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <?xml-stylesheet type='text/xsl' href='interface.xsl'?>
-<interface
-	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
-	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
-
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface" xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
 	<name>zeroinstall-ocaml</name>
 	<summary>zeroinstall-ocaml</summary>
 	<description>
 	</description>
-
 	<group arch="*-src" compile:dup-src="true">
 		<command name="compile">
-			<runner interface="http://repo.roscidus.com/utils/bash">
-				<arg>-euxc</arg>
-				<arg>
-					cd "$BUILDDIR/ocaml"
-					make ocaml
-					mkdir -p "$DISTDIR/bin"
-					cp --dereference 0install "$DISTDIR/bin/"
-				</arg>
+			<runner interface="http://repo.roscidus.com/devel/make">
+				<arg>-f</arg>
+				<arg>${{SRCDIR}}/Makefile</arg>
+				<arg>SRCDIR=${{SRCDIR}}</arg>
+				<arg>BUILDDIR=${{BUILDDIR}}</arg>
+				<arg>DISTDIR=${{DISTDIR}}</arg>
 			</runner>
+			<requires interface="http://gfxmonk.net/dist/0install/ocaml.xml">
+				<version not-before="4.0" before="4.1"/>
+			</requires>
 			<requires interface="./ocaml-ounit.0compile/ocaml-ounit-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-yojson.0compile/ocaml-yojson-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-xmlm.0compile/ocaml-xmlm-{arch}/0install/feed.xml"/>
@@ -27,6 +24,19 @@
 			</command>
 			<compile:implementation>
 				<command name="run" path="0install"/>
+				<command name="0launch" path="0launch">
+					<runner interface="http://repo.roscidus.com/python/python"/>
+				</command>
+				<command name="0install" path="ocaml/0install"/>
+				<requires interface="http://repo.roscidus.com/security/gnupg">
+					<executable-in-var name="ZEROINSTALL_GPG"/>
+				</requires>
+				<requires interface="http://repo.roscidus.com/python/python" version="2.6..!3 | 3.2.2.."/>
+				<requires interface="http://repo.roscidus.com/python/python-gobject" os="POSIX"/>
+				<requires interface="http://0install.net/2013/interfaces/0install-windows-support.xml" os="Windows">
+					<environment insert="runenv.exe" mode="replace" name="ZEROINSTALL_RUNENV"/>
+					<environment insert="" name="CAML_LD_LIBRARY_PATH"/>
+				</requires>
 			</compile:implementation>
 		</command>
 		<implementation id="HEAD" version="0.1">
@@ -38,4 +48,3 @@
 		</implementation>
 	</group>
 </interface>
-
