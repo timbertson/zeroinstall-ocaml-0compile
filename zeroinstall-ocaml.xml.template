@@ -5,7 +5,7 @@
 	<summary>zeroinstall-ocaml</summary>
 	<description>
 	</description>
-	<group arch="*-src" compile:dup-src="true">
+	<group arch="*-src">
 		<command name="compile">
 			<runner interface="http://repo.roscidus.com/devel/make">
 				<arg>-f</arg>
