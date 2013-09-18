@@ -1,3 +1,4 @@
 ocaml-ounit.0compile
 ocaml-xmlm.0compile
 ocaml-yojson.0compile
+ocaml-lwt.0compile

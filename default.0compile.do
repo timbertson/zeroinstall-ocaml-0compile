@@ -1,5 +1,5 @@
 exec >&2
-set -eux
+set -eu
 . ./do-env
 redo-ifchange "$2.xml"
 if [ -f "$2.deps" ]; then

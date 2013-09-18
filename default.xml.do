@@ -1,5 +1,5 @@
 exec >&2
-set -eux
+set -eu
 . ./do-env
 redo-ifchange "$1.template"
 vars="$(grep -E -o '^\s*version=.*' "$1.template")"
