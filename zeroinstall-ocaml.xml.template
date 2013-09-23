@@ -5,14 +5,21 @@
 	<summary>zeroinstall-ocaml</summary>
 	<description>
 	</description>
+	<feed-for interface="http://0install.net/2007/interfaces/ZeroInstall.xml"/>
 	<group arch="*-src">
 		<command name="compile">
-			<runner interface="http://repo.roscidus.com/devel/make">
-				<arg>-f</arg>
-				<arg>${{SRCDIR}}/Makefile</arg>
-				<arg>SRCDIR=${{SRCDIR}}</arg>
-				<arg>BUILDDIR=${{BUILDDIR}}</arg>
-				<arg>DISTDIR=${{DISTDIR}}</arg>
+			<runner interface="http://gfxmonk.net/dist/0install/bash.xml">
+				<arg>-euxc</arg>
+				<arg>
+					make -f ${{SRCDIR}}/Makefile SRCDIR=${{SRCDIR}} BUILDDIR=${{BUILDDIR}} DISTDIR=${{DISTDIR}}
+					rm "${{DISTDIR}}/install.sh"
+					mv "${{DISTDIR}}/0install" "${{DISTDIR}}/0install_meta"
+					mv "${{DISTDIR}}/files/"* "${{DISTDIR}}/"
+					rmdir "${{DISTDIR}}/files"
+				</arg>
+				<requires interface="http://repo.roscidus.com/devel/make">
+					<executable-in-path name="make"/>
+				</requires>
 			</runner>
 			<requires interface="http://gfxmonk.net/dist/0install/ocaml.xml">
 				<version not-before="4.0" before="4.1"/>
@@ -24,11 +31,11 @@
 			<command name="run" path="zeroinstall-ocaml">
 			</command>
 			<compile:implementation>
-				<command name="run" path="files/0install"/>
-				<command name="0launch" path="files/0launch">
+				<command name="run" path="0install"/>
+				<command name="0launch" path="0launch">
 					<runner interface="http://repo.roscidus.com/python/python"/>
 				</command>
-				<command name="0install" path="files/0install"/>
+				<command name="0install" path="0install"/>
 				<requires interface="http://repo.roscidus.com/security/gnupg">
 					<executable-in-var name="ZEROINSTALL_GPG"/>
 				</requires>
@@ -40,7 +47,7 @@
 				</requires>
 			</compile:implementation>
 		</command>
-		<implementation id="HEAD" version="0.1">
+		<implementation id="HEAD" version="2.4-rc1">
 			<manifest-digest/>
 			<recipe>
 				<archive href="HEAD.tar.gz"/>

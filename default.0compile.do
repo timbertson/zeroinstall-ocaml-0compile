@@ -12,4 +12,4 @@ if [ ! -d "$2" ]; then
 fi
 (cd "$2" && 0compile build --clean)
 mv "$2" "$3"
-rm -rf "$1"
+rm -rf "$1" || sudo rm -rf "$1"
