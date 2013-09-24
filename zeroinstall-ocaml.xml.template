@@ -5,7 +5,7 @@
 	<summary>zeroinstall-ocaml</summary>
 	<description>
 	</description>
-	<feed-for interface="http://0install.net/2007/interfaces/ZeroInstall.xml"/>
+	<feed-for interface="http://0install.net/tools/0install.xml"/>
 	<group arch="*-src">
 		<command name="compile">
 			<runner interface="http://gfxmonk.net/dist/0install/bash.xml">

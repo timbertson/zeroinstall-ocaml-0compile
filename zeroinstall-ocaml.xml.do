@@ -1,5 +1,5 @@
 exec >&2
-set -eux
+set -eu
 . ./do-env
 redo-ifchange HEAD.tar.gz
 redo-ifchange ARCH

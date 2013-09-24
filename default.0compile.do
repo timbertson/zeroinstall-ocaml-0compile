@@ -1,4 +1,8 @@
-exec >&2
+if [ -n "$REDO_XTRACE" ]; then
+	exec >&2
+else
+	exec >/dev/null
+fi
 set -eu
 . ./do-env
 redo-ifchange "$2.xml"
@@ -12,4 +16,4 @@ if [ ! -d "$2" ]; then
 fi
 (cd "$2" && 0compile build --clean)
 mv "$2" "$3"
-rm -rf "$1" || sudo rm -rf "$1"
+rm -rf "$1" || (chmod -R u+w "$1" && rm -rf "$1")
