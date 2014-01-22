@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface
+	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
+	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
+
+	<name>opam</name>
+	<summary>opam</summary>
+	<description>
+	</description>
+	<!--
+version=1.0.0 archive=https://github.com/OCamlPro/opam/archive/1.0.0.tar.gz CUDF=cudf-0.6.3 EXTLIB=extlib-1.5.3 DOSE=dose3-3.1.2 CMDLINER=cmdliner-0.9.3 GRAPH=ocamlgraph-1.8.1 RE=ocaml-re-1.2.0
+	-->
+
+	<group compile:dup-src="true" arch="*-src">
+		<command name="compile">
+			<requires interface="./ocaml-easy-format.0compile/ocaml-easy-format-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-cppo.0compile/ocaml-cppo-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-biniou.0compile/ocaml-biniou-{arch}/0install/feed.xml">
+				<version not-before="1.0.6"/>
+			</requires>
+			<runner interface="http://repo.roscidus.com/utils/bash">
+				<arg>-euxc</arg>
+				<arg>
+					cd "$SRCDIR"
+					./configure --prefix="$DISTDIR"
+					make FETCH=false # fail if we are missing any external sources
+					make install
+				</arg>
+			</runner>
+			<compile:implementation>
+				<requires interface="http://gfxmonk.net/dist/0install/ncurses-libs.xml"/>
+				<requires interface="http://gfxmonk.net/dist/0install/ncurses-devel.xml"/>
+				<command name="run" path="bin/opam"/>
+			</compile:implementation>
+		</command>
+		<implementation version="{version}">
+			<manifest-digest/>
+			<recipe>
+				<archive href="{archive}"/>
+				<file dest="src_ext/{CUDF}.tar.gz" href="https://gforge.inria.fr/frs/download.php/31910/{CUDF}.tar.gz"/>
+				<file dest="src_ext/{EXTLIB}.tar.gz" href="http://ocaml-extlib.googlecode.com/files/{EXTLIB}.tar.gz"/>
+				<file dest="src_ext/{DOSE}.tar.gz" href="https://gforge.inria.fr/frs/download.php/31595/{DOSE}.tar.gz"/>
+				<file dest="src_ext/{CMDLINER}.tbz" href="http://erratique.ch/software/cmdliner/releases/{CMDLINER}.tbz"/>
+				<file dest="src_ext/{GRAPH}.tar.gz" href="http://ocamlgraph.lri.fr/download/{GRAPH}.tar.gz"/>
+				<file dest="src_ext/{RE}.tar.gz" href="https://github.com/ocaml/ocaml-re/archive/{RE}.tar.gz"/>
+			</recipe>
+		</implementation>
+	</group>
+
+</interface>
+
