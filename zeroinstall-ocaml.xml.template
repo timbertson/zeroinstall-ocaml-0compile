@@ -10,10 +10,10 @@
 		<command name="compile">
 			<runner interface="http://repo.roscidus.com/devel/make">
 				<arg>-f</arg>
-				<arg>${SRCDIR}/Makefile</arg>
-				<arg>SRCDIR=${SRCDIR}</arg>
-				<arg>BUILDDIR=${BUILDDIR}</arg>
-				<arg>DISTDIR=${DISTDIR}</arg>
+				<arg>${{SRCDIR}}/Makefile</arg>
+				<arg>SRCDIR=${{SRCDIR}}</arg>
+				<arg>BUILDDIR=${{BUILDDIR}}</arg>
+				<arg>DISTDIR=${{DISTDIR}}</arg>
 			</runner>
 			<requires interface="http://gfxmonk.net/dist/0install/ocaml.xml">
 				<version not-before="4.0" before="4.1"/>
