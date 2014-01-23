@@ -8,47 +8,35 @@
 	<feed-for interface="http://0install.net/tools/0install.xml"/>
 	<group arch="*-src">
 		<command name="compile">
-			<runner interface="http://gfxmonk.net/dist/0install/bash.xml">
-				<arg>-euxc</arg>
-				<arg>
-					make -f ${{SRCDIR}}/Makefile SRCDIR=${{SRCDIR}} BUILDDIR=${{BUILDDIR}} DISTDIR=${{DISTDIR}}
-					rm "${{DISTDIR}}/install.sh"
-					mv "${{DISTDIR}}/0install" "${{DISTDIR}}/0install_meta"
-					mv "${{DISTDIR}}/files/"* "${{DISTDIR}}/"
-					rmdir "${{DISTDIR}}/files"
-				</arg>
-				<requires interface="http://repo.roscidus.com/devel/make">
-					<executable-in-path name="make"/>
-				</requires>
+			<runner interface="http://repo.roscidus.com/devel/make">
+				<arg>-f</arg>
+				<arg>${SRCDIR}/Makefile</arg>
+				<arg>SRCDIR=${SRCDIR}</arg>
+				<arg>BUILDDIR=${BUILDDIR}</arg>
+				<arg>DISTDIR=${DISTDIR}</arg>
 			</runner>
 			<requires interface="http://gfxmonk.net/dist/0install/ocaml.xml">
 				<version not-before="4.0" before="4.1"/>
 			</requires>
+			<requires interface="./ocaml-curl.0compile/ocaml-curl-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-extlib.0compile/ocaml-extlib-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-findlib.0compile/ocaml-findlib-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-lwt.0compile/ocaml-lwt-{arch}/0install/feed.xml"/>
-			<requires interface="./ocaml-ounit.0compile/ocaml-ounit-{arch}/0install/feed.xml"/>
-			<requires interface="./ocaml-yojson.0compile/ocaml-yojson-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-obus.0compile/ocaml-obus-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-react.0compile/ocaml-react-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-ssl.0compile/ocaml-ssl-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-xmlm.0compile/ocaml-xmlm-{arch}/0install/feed.xml"/>
-			<command name="run" path="zeroinstall-ocaml">
-			</command>
+			<requires interface="./ocaml-yojson.0compile/ocaml-yojson-{arch}/0install/feed.xml"/>
+			<!-- TODO: enable tests -->
+			<!-- <requires interface="./ocaml-ounit.0compile/ocaml-ounit-{arch}/0install/feed.xml"/> -->
 			<compile:implementation>
-				<command name="run" path="0install"/>
-				<command name="0launch" path="0launch">
-					<runner interface="http://repo.roscidus.com/python/python"/>
-				</command>
-				<command name="0install" path="0install"/>
+				<command name="run" path="files/0install"/>
 				<requires interface="http://repo.roscidus.com/security/gnupg">
 					<executable-in-var name="ZEROINSTALL_GPG"/>
 				</requires>
-				<requires interface="http://repo.roscidus.com/python/python" version="2.6..!3 | 3.2.2.."/>
-				<requires interface="http://repo.roscidus.com/python/python-gobject" os="POSIX"/>
-				<requires interface="http://0install.net/2013/interfaces/0install-windows-support.xml" os="Windows">
-					<environment insert="runenv.exe" mode="replace" name="ZEROINSTALL_RUNENV"/>
-					<environment insert="" name="CAML_LD_LIBRARY_PATH"/>
-				</requires>
 			</compile:implementation>
 		</command>
-		<implementation id="HEAD" version="2.4-rc1">
+		<implementation id="HEAD" version="2.6">
 			<manifest-digest/>
 			<recipe>
 				<archive href="HEAD.tar.gz"/>

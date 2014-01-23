@@ -4,33 +4,27 @@
 	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
 
-	<name>ocaml-yojson</name>
-	<summary>ocaml-yojson</summary>
+	<name>ocaml-type_conv</name>
+	<summary>ocaml-type_conv</summary>
 	<description>
 	</description>
 	<!--
-version=2.4.3 archive=http://ocsigen.org/download/lwt-2.4.3.tar.gz
+version=109.41.00-rc1 archive=https://github.com/janestreet/type_conv/archive/109.41.00-rc1.tar.gz
 	-->
 
-	<group compile:dup-src="true" arch="*-src">
+	<group arch="*-src" compile:dup-src="true">
 		<command name="compile">
 			<requires interface="./ocaml-findlib.0compile/ocaml-findlib-{arch}/0install/feed.xml"/>
-			<requires interface="./ocaml-react.0compile/ocaml-react-{arch}/0install/feed.xml"/>
-			<requires interface="http://gfxmonk.net/dist/0install/glib2-devel.xml"/>
 			<runner interface="http://repo.roscidus.com/utils/bash">
 				<arg>-euxc</arg>
 				<arg>
 					cd "$SRCDIR"
-					#TODO: depend on libev (linux only)
-					ocaml setup.ml -configure --disable-docs --destdir "$DISTDIR" --disable-libev --enable-glib --enable-react
-					ocaml setup.ml -build
 					export OCAMLFIND_DESTDIR="$DISTDIR"
-					export OCAMLFIND_LDCONF=ignore
-					ocaml setup.ml -install -ldconf ignore
+					make
+					make install
 				</arg>
 			</runner>
 			<compile:implementation>
-				<environment insert="lwt" mode="prepend" name="LD_LIBRARY_PATH"/>
 				<environment insert="" mode="prepend" name="OCAMLPATH"/>
 			</compile:implementation>
 		</command>
