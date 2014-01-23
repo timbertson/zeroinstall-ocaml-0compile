@@ -1,0 +1,3 @@
+#!bash -eu
+gup feeds
+gup zeroinstall-ocaml.0compile

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='resources/feed.xsl'?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+	<name>ocamlp4</name>
+	<summary>ocamlp4</summary>
+	<description>ocamlp4 (package implementation)</description>
+	<package-implementation main="/usr/bin/ocamlp4" package="ocaml-camlp4-devel"/>
+</interface>

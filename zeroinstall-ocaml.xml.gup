@@ -1,0 +1,6 @@
+#!bash -eu
+. ./build-env
+gup -u HEAD.tar.gz
+gup -u ARCH
+gup -u "$2.template"
+0template -o "$1" "$2.template" arch="$(cat ARCH)"

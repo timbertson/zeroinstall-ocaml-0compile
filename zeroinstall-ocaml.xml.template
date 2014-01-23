@@ -24,6 +24,7 @@
 			<requires interface="http://gfxmonk.net/dist/0install/ocaml.xml">
 				<version not-before="4.0" before="4.1"/>
 			</requires>
+			<requires interface="./ocaml-findlib.0compile/ocaml-findlib-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-lwt.0compile/ocaml-lwt-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-ounit.0compile/ocaml-ounit-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-yojson.0compile/ocaml-yojson-{arch}/0install/feed.xml"/>

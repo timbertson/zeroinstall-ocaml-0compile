@@ -14,6 +14,7 @@ version=2.4.3 archive=http://ocsigen.org/download/lwt-2.4.3.tar.gz
 
 	<group compile:dup-src="true" arch="*-src">
 		<command name="compile">
+			<requires interface="./ocaml-findlib.0compile/ocaml-findlib-{arch}/0install/feed.xml"/>
 			<runner interface="http://repo.roscidus.com/utils/bash">
 				<arg>-euxc</arg>
 				<arg>

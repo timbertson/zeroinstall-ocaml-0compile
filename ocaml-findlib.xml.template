@@ -4,26 +4,30 @@
 	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
 
-	<name>ocaml-easy-format</name>
-	<summary>ocaml-easy-format</summary>
+	<name>ocaml-findlib</name>
+	<summary>ocaml-findlib</summary>
 	<description>
 	</description>
 	<!--
-			version=1.0.1 archive=http://mjambon.com/releases/easy-format/easy-format-1.0.1.tar.gz
+version=1.4.0 archive=http://download.camlcity.org/download/findlib-1.4.tar.gz
 	-->
 
-	<group arch="*-src" compile:dup-src="true">
+	<group compile:dup-src="true" arch="*-src">
 		<command name="compile">
-			<requires interface="./ocaml-findlib.0compile/ocaml-findlib-{arch}/0install/feed.xml"/>
 			<runner interface="http://repo.roscidus.com/utils/bash">
 				<arg>-euxc</arg>
 				<arg>
 					cd "$SRCDIR"
-					OCAMLFIND_DESTDIR="$DISTDIR" make default install
+					./configure -no-topfind -bindir "$DISTDIR/bin" -mandir "$DISTDIR/man" -sitelib "$DISTDIR/lib" -config "$DISTDIR/conf"
+					make all
+					make opt
+					make install
+					chmod -R a-w "$DISTDIR"
 				</arg>
 			</runner>
 			<compile:implementation>
-				<environment insert="" mode="prepend" name="OCAMLPATH"/>
+				<environment insert="bin" mode="prepend" name="PATH"/>
+				<environment insert="lib" mode="prepend" name="OCAMLPATH"/>
 			</compile:implementation>
 		</command>
 		<implementation version="{version}">

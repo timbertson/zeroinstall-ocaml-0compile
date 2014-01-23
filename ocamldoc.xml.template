@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='resources/feed.xsl'?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+	<name>ocamldoc</name>
+	<summary>ocamldoc</summary>
+	<description>ocamldoc (package implementation)</description>
+	<package-implementation main="/usr/bin/ocamldoc" package="ocaml-ocamldoc"/>
+</interface>

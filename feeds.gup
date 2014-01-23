@@ -1,5 +1,5 @@
-exec >&2
-redo-ifchange \
+#!bash -eu
+gup -u \
 	ocaml-ounit.xml \
 	ocaml-yojson.xml \
 	ocaml-xmlm.xml \
