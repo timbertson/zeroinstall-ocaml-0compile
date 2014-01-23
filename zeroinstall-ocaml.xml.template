@@ -22,6 +22,7 @@
 			<requires interface="./ocaml-extlib.0compile/ocaml-extlib-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-findlib.0compile/ocaml-findlib-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-lwt.0compile/ocaml-lwt-{arch}/0install/feed.xml"/>
+			<requires interface="./ocaml-lablgtk.0compile/ocaml-lablgtk-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-obus.0compile/ocaml-obus-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-react.0compile/ocaml-react-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-ssl.0compile/ocaml-ssl-{arch}/0install/feed.xml"/>
