@@ -28,8 +28,7 @@
 			<requires interface="./ocaml-ssl.0compile/ocaml-ssl-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-xmlm.0compile/ocaml-xmlm-{arch}/0install/feed.xml"/>
 			<requires interface="./ocaml-yojson.0compile/ocaml-yojson-{arch}/0install/feed.xml"/>
-			<!-- TODO: enable tests -->
-			<!-- <requires interface="./ocaml-ounit.0compile/ocaml-ounit-{arch}/0install/feed.xml"/> -->
+			<requires interface="./ocaml-ounit.0compile/ocaml-ounit-{arch}/0install/feed.xml"/>
 			<compile:implementation>
 				<command name="run" path="files/0install"/>
 				<requires interface="http://repo.roscidus.com/security/gnupg">
