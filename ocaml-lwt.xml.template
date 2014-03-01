@@ -4,8 +4,8 @@
 	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
 	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
 
-	<name>ocaml-yojson</name>
-	<summary>ocaml-yojson</summary>
+	<name>ocaml-lwt</name>
+	<summary>ocaml-lwt</summary>
 	<description>
 	</description>
 	<!--
