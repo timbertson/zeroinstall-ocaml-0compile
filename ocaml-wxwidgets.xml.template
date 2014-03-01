@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type='text/xsl' href='interface.xsl'?>
+<interface
+	xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
+	xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile">
+
+	<name>ocaml-wxWidgets</name>
+	<summary>ocaml-wxWidgets</summary>
+	<description>
+	</description>
+	<!--
+version=0.1-pre archive=https://github.com/OCamlPro/ocplib-wxOCaml/tarball/a619b25fa78dadc0c602d5c483f61d4e01fefddf#.tar.gz
+	-->
+
+	<group compile:dup-src="true" arch="*-src">
+		<command name="compile">
+			<requires interface="http://gfxmonk.net/dist/0install/wxgtk-devel.xml"/>
+			<requires interface="./ocaml-ocp-build.0compile/ocaml-ocp-build-{arch}/0install/feed.xml">
+				<executable-in-path name="ocp-build"/>
+			</requires>
+			<runner interface="http://repo.roscidus.com/utils/bash">
+				<arg>-euxc</arg>
+				<arg>
+					cd "$BUILDDIR"
+					export OCP_HOME="$PWD/.ocp_home"
+
+					rm -rf samples
+					sed -i.orig -e 's/@LIBS@ *"/@LIBS --lstdc++ "/' config.ocp.in
+					export CXXFLAGS="-I$$(ocamlc -where)"
+
+					./configure
+
+					chmod +w config.ocp wxWidgets/wxConfig.ocp
+					cd wxWidgets
+					cp wxConfig.ocp{{,.real}}
+					echo -e "begin library \"wxWidgets\" end\nbegin library \"wxConfig\" end" > wxConfig.ocp
+					cd ..
+
+					ocp-build -save-user-prefs
+
+					make -C wxStubsGen
+					mv wxWidgets/wxConfig.ocp{{.real,}}
+
+
+					# XXX I don't have these things. wx version issues?
+					rm -f \
+						api/wxDataViewIndexListModel.api \
+						api/wxDataViewListModel.api \
+						api/wxDataViewListStore.api \
+						api/wxDataViewModel.api \
+						api/wxDataViewVirtualListModel.api \
+					;
+					sed -i -E -e '/\t(WriteText|Remove|Replace|((Get|Set)(Selection|InsertionPoint|LastPosition))) /d' api/wxStyledTextCtrl.api
+					sed -i -E -e '/samples\/wxSamples/d' Makefile
+
+					make
+
+					# XXX ocp-build install goes into the first dir on $OCAMLPATH, so we trick it into oing into $DISTDIR
+					export OCAMLPATH=".:$OCAMLPATH"
+					ocp-build install -install-destdir "$DISTDIR" wxWidgets wxConfig
+				</arg>
+			</runner>
+			<compile:implementation>
+				<!-- <environment insert="" mode="prepend" name="OCAMLPATH"/> -->
+			</compile:implementation>
+		</command>
+		<implementation version="{version}">
+			<manifest-digest/>
+			<recipe>
+				<archive href="{archive}"/>
+			</recipe>
+		</implementation>
+	</group>
+
+</interface>
+
